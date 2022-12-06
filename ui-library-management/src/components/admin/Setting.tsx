@@ -16,6 +16,7 @@ import { RentContext } from "../../context/RentContext";
 import { SettingContext } from "../../context/SettingContext";
 // import { IAdminLogin } from '../../interfaces/IAdmin.interface'
 import { IManageSetting } from "../../interfaces/ISetting.interface";
+import NotiStack from "../common/NotiStack";
 
 export interface ICurrencyOption {
   id: string;
@@ -27,6 +28,8 @@ const Setting = () => {
   const setting = JSON.parse(localStorage.getItem("setting") as string);
   const [err, setErr] = useState<string>("");
   const { reload, setReload } = useContext(RentContext);
+  const [openNoti, setOpenNoti] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
   // length 164
   var currency_list = [
     { name: "Afghan Afghani", code: "AFA", symbol: "؋" },
@@ -195,6 +198,17 @@ const Setting = () => {
     { name: "Zambian Kwacha", code: "ZMK", symbol: "ZK" },
   ];
 
+  const handleCloseNoti = (
+    event: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpenNoti(false);
+  };
+
   // console.log(options);
   const onSubmit: SubmitHandler<IManageSetting> = async (data) => {
     await api
@@ -203,7 +217,7 @@ const Setting = () => {
         updatedBy: JSON.parse(localStorage.getItem("adminInfo") as string)?.id,
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         // delete res.data.createdAt;
         // delete res.data.updatedAt;
         // delete res.data.createdBy;
@@ -213,6 +227,8 @@ const Setting = () => {
         // localStorage.setItem("isAdmin", "true");
         setReload(!reload);
         localStorage.setItem("setting", JSON.stringify(data));
+        setOpenNoti(true);
+        setError("Success: Setting have been updated");
         // setIsLogged(true);
         // setIsAdmin(true);
         // setAdminInfo(res.data);
@@ -365,6 +381,11 @@ const Setting = () => {
           </Button>
         </div>
       </form>
+      <NotiStack
+        open={openNoti}
+        value={error}
+        onClose={handleCloseNoti}
+      ></NotiStack>
     </div>
   );
 };

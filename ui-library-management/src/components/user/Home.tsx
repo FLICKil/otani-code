@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import banner from "../.././assets/banner.png";
 import api from "../../api";
 import { BookContext } from "../../context/BookContext";
@@ -32,7 +33,7 @@ const Home = () => {
   // const {listCategory} = useContext(CategoryContext)
 
   function handleClickCategory(id?: number) {
-    console.log(id);
+    // console.log(id);
     setCategoryId(id as number);
   }
 
@@ -83,7 +84,7 @@ const Home = () => {
               ))}
             </ul>
             <div className="mt-6 text-[#0d6efd] cursor-pointer hover:underline">
-              and more...
+              <Link to="/ShowBook">and more...</Link>
             </div>
           </div>
           {/* right */}

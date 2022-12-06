@@ -96,7 +96,7 @@ export default function Root() {
         path="/IssueDetails"
         element={log && admin ? <IssueDetails /> : <AdminLogin />}
       ></Route>
-      <Route path="/ShowBook" element={log ? <ShowBook /> : <Login />} />
+      <Route path="/ShowBook" element={<ShowBook />} />
       <Route path="/BookDetails/:bookId" element={<BookDetails />}></Route>
       <Route
         path="/profile/:id"

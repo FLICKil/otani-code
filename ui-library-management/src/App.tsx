@@ -13,7 +13,7 @@ import { SettingContextProvider } from "./context/SettingContext";
 function App() {
   const [count, setCount] = useState(0);
 
-  let timer : number;
+  let timer: number;
   const runTimer = () => {
     timer = window.setTimeout(() => {
       localStorage.clear();
@@ -27,11 +27,11 @@ function App() {
   return (
     <AdminContextProvider>
       <UserContextProvider>
-        <BookContextProvider>
-          <AuthorContextProvider>
-            <CategoryContextProvider>
-              <PublisherContextProvider>
-                <SettingContextProvider>
+        <SettingContextProvider>
+          <BookContextProvider>
+            <AuthorContextProvider>
+              <CategoryContextProvider>
+                <PublisherContextProvider>
                   <RentContextProvider>
                     <BrowserRouter>
                       <div className="App">
@@ -39,11 +39,11 @@ function App() {
                       </div>
                     </BrowserRouter>
                   </RentContextProvider>
-                </SettingContextProvider>
-              </PublisherContextProvider>
-            </CategoryContextProvider>
-          </AuthorContextProvider>
-        </BookContextProvider>
+                </PublisherContextProvider>
+              </CategoryContextProvider>
+            </AuthorContextProvider>
+          </BookContextProvider>
+        </SettingContextProvider>
       </UserContextProvider>
     </AdminContextProvider>
   );

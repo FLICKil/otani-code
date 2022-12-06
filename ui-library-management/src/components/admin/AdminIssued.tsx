@@ -22,7 +22,8 @@ const AdminIssued = () => {
   const { listAdmin } = useContext(AdminContext);
   const { listBook } = useContext(BookContext);
   const { listUser } = useContext(UserContext);
-  const { setting } = useContext(SettingContext);
+  // const { setting,setSetting } = useContext(SettingContext);
+  const setting = JSON.parse(localStorage.getItem('setting') as string);
   const navigate = useNavigate();
   const [bookOption, setBookOption] = useState<IOption[]>([] as IOption[]);
   const [userOption, setUserOption] = useState<IOption[]>([] as IOption[]);
