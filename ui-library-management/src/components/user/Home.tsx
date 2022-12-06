@@ -103,7 +103,7 @@ const Home = () => {
         </div>
         <div className="flex">
           <button className="border border-[#0D6EFD] rounded p-4 text-[#0D6EFD] m-auto mt-12 hover:underline">
-            See more
+            <Link to="/ShowBook">See more</Link>
           </button>
         </div>
       </section>
