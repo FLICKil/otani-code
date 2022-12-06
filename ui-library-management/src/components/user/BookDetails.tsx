@@ -127,7 +127,7 @@ const BookDetails = () => {
                 <TableCell>
                   <div>
                     <img
-                      className="w-200"
+                      className="w-[200px]"
                       src={`data:image/png;base64,` + book?.coverImg}
                     />
                   </div>
