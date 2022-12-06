@@ -89,11 +89,12 @@ const AdminLogin = () => {
   };
 
   useEffect(() => {
-    if (isSubmitted) {
-      setErr("");
-    }
+    // if (isSubmitted) {
+
+    // }
     if (isSubmitSuccessful) {
       reset({ ...user, password: "", confirmPassword: "" });
+      setTimeout(() => setErr(""), 2000);
     }
   }, [reload]);
 
