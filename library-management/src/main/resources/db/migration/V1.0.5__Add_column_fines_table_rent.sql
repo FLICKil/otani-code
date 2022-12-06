@@ -1,0 +1,1 @@
+alter table rent add column fines decimal(4,2) default 0;

@@ -1,0 +1,1 @@
+ALTER TABLE book add column coverImg MEDIUMBLOB;
